@@ -15,7 +15,7 @@ function emailVerification(token, email) {
     to: `${email}`,
     subject: "Google Drive: Two step verification",
     text: `click on the link to verify account
-    http://localhost:8080/register/confirmation/${token}`,
+    https://amazon-clone-back.herokuapp.com/register/confirmation/${token}`,
   };
 
   mailTransporter.sendMail(mailDetails, function (err, data) {
@@ -43,7 +43,7 @@ function resetPassword(token, email) {
     to: `${email}`,
     subject: "Google Drive: Reset Password",
     text: `click on the link to reset password
-       http://localhost:3000/reset-password/${token}`,
+       https://amazon-clone-front.herokuapp.com/${token}`,
   };
 
   mailTransporter.sendMail(mailDetails, function (err, data) {
