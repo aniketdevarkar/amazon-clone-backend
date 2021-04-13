@@ -49,7 +49,7 @@ function resetPassword(token, email) {
     to: `${email}`,
     subject: "Google Drive: Reset Password",
     text: `click on the link to reset password
-       https://amazon-clone-front.herokuapp.com/${token}`,
+       https://amazon-clone-front.herokuapp.com/reset-password/${token}`,
   };
 
   mailTransporter.sendMail(mailDetails, function (err, data) {
