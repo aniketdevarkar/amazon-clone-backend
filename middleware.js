@@ -25,7 +25,7 @@ async function confirmation(req, res, next) {
         { email: decode.email },
         { $set: { activation: true } }
       );
-    //console.log(decode);
+
     next();
   } catch (error) {
     res.status(401).json({ messsage: "invalid account not verified" });
