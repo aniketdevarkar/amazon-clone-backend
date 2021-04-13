@@ -4,6 +4,9 @@ require("dotenv").config();
 function emailVerification(token, email) {
   let mailTransporter = nodemailer.createTransport({
     service: "gmail",
+    //host: 'myhost',
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.user,
       pass: process.env.pass,
@@ -32,6 +35,9 @@ function emailVerification(token, email) {
 function resetPassword(token, email) {
   let mailTransporter = nodemailer.createTransport({
     service: "gmail",
+    //host: 'myhost',
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.user,
       pass: process.env.pass,
