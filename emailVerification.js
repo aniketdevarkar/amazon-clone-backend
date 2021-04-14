@@ -59,9 +59,7 @@ require("dotenv").config();
 // });
 // }
 
-// const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
-// const { getAllProducts } = require("../amazon-frontend/src/apicalls");
 const OAuth2 = google.auth.OAuth2;
 
 const oauth2Client = new OAuth2(
@@ -91,13 +89,6 @@ const smtpTransport = nodemailer.createTransport({
 });
 
 function emailVerification(token, email) {
-  // let mailDetails = {
-  //   from: "jigneshkapadia27@gmail.com",
-  //   to: `${email}`,
-  //   subject: "Google Drive: Reset Password",
-  //   text: `click on the link to reset password
-  //      https://amazon-clone-front.herokuapp.com/reset-password/${token}`,
-  // };
   let mailOptions = {
     from: "jigneshkapadia27@gmail.com",
     to: `${email}`,

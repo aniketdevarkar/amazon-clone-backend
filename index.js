@@ -123,6 +123,7 @@ app.post("/register", async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
+    await emailVerification(token, req.body.email);
     await db.collection("amazon_users").insertOne({
       email: req.body.email,
       firstName: req.body.firstName,
@@ -135,9 +136,8 @@ app.post("/register", async (req, res) => {
       { email: req.body.email },
       process.env.ACCESS_TOKEN_SECRET_EMAIL
     );
-    const val = emailVerification(token, req.body.email);
 
-    res.status(200).json({ message: "Email sent succesfully" });
+    return res.status(200).json({ message: "Email sent succesfully" });
     clientInfo.close();
   } catch (error) {
     console.log(error);
