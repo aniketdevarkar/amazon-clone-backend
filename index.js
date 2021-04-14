@@ -123,6 +123,10 @@ app.post("/register", async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
+    const token = jwt.sign(
+      { email: req.body.email },
+      process.env.ACCESS_TOKEN_SECRET_EMAIL
+    );
     await emailVerification(token, req.body.email);
     await db.collection("amazon_users").insertOne({
       email: req.body.email,
@@ -132,10 +136,6 @@ app.post("/register", async (req, res) => {
       activation: false,
       role: req.body.role,
     });
-    const token = jwt.sign(
-      { email: req.body.email },
-      process.env.ACCESS_TOKEN_SECRET_EMAIL
-    );
 
     return res.status(200).json({ message: "Email sent succesfully" });
     clientInfo.close();
