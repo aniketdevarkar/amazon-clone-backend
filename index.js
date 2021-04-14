@@ -135,7 +135,7 @@ app.post("/register", async (req, res) => {
       { email: req.body.email },
       process.env.ACCESS_TOKEN_SECRET_EMAIL
     );
-    emailVerification(token, req.body.email);
+    const val = emailVerification(token, req.body.email);
 
     res.status(200).json({ message: "Email sent succesfully" });
     clientInfo.close();
@@ -144,7 +144,7 @@ app.post("/register", async (req, res) => {
     res.sendStatus(500);
   }
 });
-
+// emailVerification("123nndannnadn2323", "aniketdevarkar98@gmail.com");
 app.get("/register/confirmation/:token", confirmation, (req, res) => {
   res.status(200).json({ message: "YOUR ACCOUNT IS ACTIVATED" });
 });
