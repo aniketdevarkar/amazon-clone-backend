@@ -1,18 +1,17 @@
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
+let mailTransporter = nodemailer.createTransport({
+  service: "gmail",
+  //host: 'myhost',
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.user,
+    pass: process.env.pass,
+  },
+});
 function emailVerification(token, email) {
-  let mailTransporter = nodemailer.createTransport({
-    service: "gmail",
-    //host: 'myhost',
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.user,
-      pass: process.env.pass,
-    },
-  });
-
   let mailDetails = {
     from: "jigneshkapadia27@gmail.com",
     to: `${email}`,
@@ -33,16 +32,16 @@ function emailVerification(token, email) {
 }
 
 function resetPassword(token, email) {
-  let mailTransporter = nodemailer.createTransport({
-    service: "gmail",
-    //host: 'myhost',
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.user,
-      pass: process.env.pass,
-    },
-  });
+  // let mailTransporter = nodemailer.createTransport({
+  //   service: "gmail",
+  //   //host: 'myhost',
+  //   port: 465,
+  //   secure: true,
+  //   auth: {
+  //     user: process.env.user,
+  //     pass: process.env.pass,
+  //   },
+  // });
 
   let mailDetails = {
     from: "jigneshkapadia27@gmail.com",
