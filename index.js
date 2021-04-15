@@ -20,7 +20,7 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 app.use(cors());
 
-const dbUrl = process.env.DB_URL; //sI2SXgjjkuvVgLbE
+const dbUrl = process.env.DB_URL; 
 
 app.get("/", authenticate, async (req, res) => {
   try {
