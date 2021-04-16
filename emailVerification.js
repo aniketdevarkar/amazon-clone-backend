@@ -1,64 +1,6 @@
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
-// let mailTransporter = nodemailer.createTransport({
-//   service: "gmail",
-//   //host: 'myhost',
-//   port: 465,
-//   secure: true,
-//   auth: {
-//     user: process.env.user,
-//     pass: process.env.pass,
-//   },
-// });
-// async function emailVerification(token, email) {
-// let mailDetails = {
-//   from: "jigneshkapadia27@gmail.com",
-//   to: `${email}`,
-//   subject: "Google Drive: Two step verification",
-//   text: `click on the link to verify account
-//   https://amazon-clone-back.herokuapp.com/register/confirmation/${token}`,
-// };
-// await mailTransporter.sendMail(mailDetails, function (err, data) {
-//   if (err) {
-//     console.log(err);
-//     return err;
-//   } else {
-//     console.log("email sent");
-//     return "1";
-//   }
-// });
-// }
-
-// function resetPassword(token, email) {
-// let mailTransporter = nodemailer.createTransport({
-//   service: "gmail",
-//   //host: 'myhost',
-//   port: 465,
-//   secure: true,
-//   auth: {
-//     user: process.env.user,
-//     pass: process.env.pass,
-//   },
-// });
-// let mailDetails = {
-//   from: "jigneshkapadia27@gmail.com",
-//   to: `${email}`,
-//   subject: "Google Drive: Reset Password",
-//   text: `click on the link to reset password
-//      https://amazon-clone-front.herokuapp.com/reset-password/${token}`,
-// };
-// mailTransporter.sendMail(mailDetails, function (err, data) {
-//   if (err) {
-//     console.log(err);
-//     return err;
-//   } else {
-//     console.log("email sent");
-//     return "1";
-//   }
-// });
-// }
-
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 
@@ -92,7 +34,7 @@ function emailVerification(token, email) {
   let mailOptions = {
     from: "jigneshkapadia27@gmail.com",
     to: `${email}`,
-    subject: "Google Drive: Two step verification",
+    subject: "Amazon Clone: Two step verification",
     text: `click on the link to verify account
     https://amazon-clone-back.herokuapp.com/register/confirmation/${token}`,
   };
@@ -102,19 +44,11 @@ function emailVerification(token, email) {
   });
 }
 
-const mailOptions = {
-  from: "jigneshkapadia27@gmail.com",
-  to: "aniketdevarkar98@gmail.com",
-  subject: "Node.js Email with Secure OAuth",
-  generateTextFromHTML: true,
-  html: "<b>test</b>",
-};
-
-function resetPassword(token, email) {
+async function resetPassword(token, email) {
   let mailOptions = {
     from: "jigneshkapadia27@gmail.com",
     to: `${email}`,
-    subject: "Google Drive: Reset Password",
+    subject: "Amazon Clone: Reset Password",
     text: `click on the link to reset password
        https://amazon-clone-front.herokuapp.com/reset-password/${token}`,
   };
