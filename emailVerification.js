@@ -10,7 +10,7 @@ function emailVerification(token, email) {
     },
   });
 
-  let mailOptions = {
+  let mailDetails = {
     from: "jigneshkapadia27@gmail.com",
     to: `${email}`,
     subject: "Amazon Clone: Two step verification",
@@ -38,7 +38,7 @@ function resetPassword(token, email) {
     },
   });
 
-  let mailOptions = {
+  let mailDetails = {
     from: "jigneshkapadia27@gmail.com",
     to: `${email}`,
     subject: "Amazon Clone: Reset Password",
